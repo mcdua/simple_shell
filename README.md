@@ -1,6 +1,6 @@
 #0x16. C - Simple Shell
 
-A collaboration between Abatey Robespierre and Castro Mcdua.
+A collaboration between Abatey Robespierre and Isaac Castro Mcduah.
 A program that works exactly as a shell.
 
 ## Tasks
