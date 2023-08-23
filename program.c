@@ -2,6 +2,8 @@
 #include "shell.h"
 #include <unistd.h>
 
+#define MAX_COMMAND 20
+
 /**
  * program - A simple cmd line shell
  * @av: Takes arguments
@@ -11,10 +13,10 @@
 void program(char **av, char **env)
 {
 	char *pull = NULL;
-	int x, pos;
+	int x, w, pos;
 	size_t y = 0;
 	ssize_t no_ch;
-	char *fly[] = {NULL, NULL};
+	char *fly[MAX_COMMAND];
 	pid_t baby_pid;
 
 	while (1)
@@ -35,7 +37,13 @@ void program(char **av, char **env)
 				pull[x] = 0;
 			x++;
 		}
-		fly[0] = pull;
+		w = 0;
+		fly[0] = strtok(pull, " ");
+		while (fly[w] != NULL)
+		{
+			w++;
+			fly[w] = strtok(NULL, " ");
+		}
 		baby_pid = fork();
 		if (baby_pid == -1)
 		{
